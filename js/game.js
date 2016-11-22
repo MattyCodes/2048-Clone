@@ -226,8 +226,8 @@ var gameOver = function() {
 
 var displayResult = function() {
 		if ( gameOver() == true ) {
-			$("#game-over").fadeIn(900);
-			$("#new-game").fadeOut(450);
+			$("#game-over").fadeIn(700);
+			$("#new-game").fadeOut(300);
 		};
 };
 
@@ -236,8 +236,8 @@ var buttonListener = function() {
 		newGame();
 	});
 	$("body").on("click", "#try-again", function() {
-		$("#game-over").fadeOut(900);
-		$("#new-game").fadeIn(900);
+		$("#game-over").fadeOut(700);
+		$("#new-game").fadeIn(700);
 		newGame();
 	});
 };
