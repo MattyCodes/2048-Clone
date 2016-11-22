@@ -2,73 +2,64 @@
 <html lang="en">
 <head>
   <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
   <link rel="stylesheet" href="css/application.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="js/mousetrap.js"></script>
-  <script src="js/underscore.js"></script>
   <script src="js/game.js"></script>
   <script src="js/application.js"></script>
   <title>2048</title>
 </head>
 <body>
-  <h1> 2048 </h1>
-  <table>
-    <tr>
-      <td>
-        
-      </td>
-      <td>
-        
-      </td>
-      <td>
-        
-      </td>
-      <td>
-        
-      </td>
-    </tr>
-    <tr>
-      <td>
-        
-      </td>
-      <td>
-        
-      </td>
-      <td>
-        
-      </td>
-      <td>
-        
-      </td>
-    </tr>
-    <tr>
-      <td>
-        
-      </td>
-      <td>
-        
-      </td>
-      <td>
-        
-      </td>
-      <td>
-        
-      </td>
-    </tr>
-    <tr>
-      <td>
-        
-      </td>
-      <td>
-        
-      </td>
-      <td>
-        
-      </td>
-      <td>
-        
-      </td>
-    </tr>
-  </table>
+  <div id="game-play">
+    <div id="game-over" class="hidden centered">
+      <h1>Game Over!</h1>
+      <button id="try-again"> Try Again </button>
+    </div>
+    <h1> 2048 </h1>
+    <table>
+      <tr>
+        <td>
+        </td>
+        <td>
+        </td>
+        <td>
+        </td>
+        <td>
+        </td>
+      </tr>
+      <tr>
+        <td>
+        </td>
+        <td>
+        </td>
+        <td>
+        </td>
+        <td>
+        </td>
+      </tr>
+      <tr>
+        <td>
+        </td>
+        <td>
+        </td>
+        <td>
+        </td>
+        <td>
+        </td>
+      </tr>
+      <tr>
+        <td>
+        </td>
+        <td>
+        </td>
+        <td>
+        </td>
+        <td>
+        </td>
+      </tr>
+    </table>
+    <button id="new-game"> New Game </button>
+  </div>
 </body>
 </html>

@@ -40,7 +40,7 @@ var anyEmpty = function() {
 
 var removeMerge = function() {
 	$( "td" ).removeClass("merge");
-}
+};
 
 var randomTile = function(boardArray) {
 	// Generate a random '2' tile somewhere on the board that is not yet filled.
@@ -111,6 +111,7 @@ var keyRight = function() {
 	Mousetrap.bind('right', function() {
 		moveRight();
 		removeMerge();
+		displayResult();
 	});
 };
 
@@ -152,6 +153,7 @@ var keyLeft = function() {
 	Mousetrap.bind('left', function() {
 		moveLeft();
 		removeMerge();
+		displayResult();
 	});
 };
 
@@ -179,6 +181,7 @@ var keyUp = function() {
 	Mousetrap.bind('up', function() {
 		moveUp();
 		removeMerge();
+		displayResult();
 	});
 };
 
@@ -196,14 +199,48 @@ var keyDown = function() {
 	Mousetrap.bind('down', function() {
 		moveDown();
 		removeMerge();
+		displayResult();
 	});
 };
 
+var gameOver = function() {
+	if ( anyEmpty() == false ) {
+		var ended = true;
+		var g = getGrid();
+		for (var r = 0; r <= 3; r ++) {
+			for (var i = 0; i <= 3; i ++) {
+				if ( i != 3 && Number( $(g[r][i]).html() ) == Number( $(g[r][i + 1]).html() ) ) {
+					ended = false;
+				} else if ( i != 0 && Number( $(g[r][i]).html() ) == Number( $(g[r][i - 1]).html() ) ) {
+					ended = false;
+				} else if ( r != 0 && Number( $(g[r][i]).html() ) == Number( $(g[r - 1][i]).html() ) ) {
+					ended = false;
+				} else if ( r != 3 && Number( $(g[r][i]).html() ) == Number( $(g[r + 1][i]).html() ) ) {
+					ended = false;
+				};
+			};
+		};
+	};
+	return ended;
+};
 
+var displayResult = function() {
+		if ( gameOver() == true ) {
+			$("#game-over").fadeIn(900);
+			$("#new-game").fadeOut(450);
+		};
+};
 
-
-
-
+var buttonListener = function() {
+	$("body").on("click", "#new-game", function() {
+		newGame();
+	});
+	$("body").on("click", "#try-again", function() {
+		$("#game-over").fadeOut(900);
+		$("#new-game").fadeIn(900);
+		newGame();
+	});
+};
 
 
 
