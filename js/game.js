@@ -241,15 +241,3 @@ var buttonListener = function() {
 		newGame();
 	});
 };
-
-
-
-
-
-
-
-
-
-
-
-
