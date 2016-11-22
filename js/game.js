@@ -38,6 +38,10 @@ var anyEmpty = function() {
 	return empty;
 };
 
+var removeMerge = function() {
+	$( "td" ).removeClass("merge");
+}
+
 var randomTile = function(boardArray) {
 	// Generate a random '2' tile somewhere on the board that is not yet filled.
 	if ( anyEmpty() == true ) {
@@ -88,13 +92,14 @@ var rightRow = function(row, i) {
 			$( row[i] ).empty();
 			$( row[i + 1] ).append(num);
 			rightRow(row, i + 1);
-		} else if ( Number( $(row[i]).html() ) == Number( $(row[i + 1]).html() ) ) {
+		} else if ( Number( $(row[i]).html() ) == Number( $(row[i + 1]).html() ) && $(row[i + 1]).hasClass('merge') == false ) {
 			var numOne = Number( $(row[i]).html() );
 			var numTwo = Number( $(row[i + 1]).html() );
 			var result = numOne + numTwo;
 			$( row[i] ).empty();
 			$( row[i + 1] ).empty();
 			$( row[i + 1] ).append(result);
+			$( row[i + 1] ).addClass('merge');
 			return 'Done';
 		} else {
 			return 'Done';
@@ -105,6 +110,7 @@ var rightRow = function(row, i) {
 var keyRight = function() {
 	Mousetrap.bind('right', function() {
 		moveRight();
+		removeMerge();
 	});
 };
 
@@ -127,13 +133,14 @@ var leftRow = function(row, i) {
 			$( row[i] ).empty();
 			$( row[i - 1] ).append(num);
 			leftRow(row, i - 1);
-		} else if ( Number( $(row[i]).html() ) == Number( $(row[i - 1]).html() ) ) {
+		} else if ( Number( $(row[i]).html() ) == Number( $(row[i - 1]).html() ) && $(row[i - 1]).hasClass('merge') == false ) {
 			var numOne = Number( $(row[i]).html() );
 			var numTwo = Number( $(row[i - 1]).html() );
 			var result = numOne + numTwo;
 			$( row[i] ).empty();
 			$( row[i - 1] ).empty();
 			$( row[i - 1] ).append(result);
+			$( row[i - 1] ).addClass('merge');
 			return 'Done';
 		} else {
 			return 'Done';
@@ -144,6 +151,7 @@ var leftRow = function(row, i) {
 var keyLeft = function() {
 	Mousetrap.bind('left', function() {
 		moveLeft();
+		removeMerge();
 	});
 };
 
@@ -170,6 +178,7 @@ var moveUp = function() {
 var keyUp = function() {
 	Mousetrap.bind('up', function() {
 		moveUp();
+		removeMerge();
 	});
 };
 
@@ -186,6 +195,7 @@ var moveDown = function() {
 var keyDown = function() {
 	Mousetrap.bind('down', function() {
 		moveDown();
+		removeMerge();
 	});
 };
 
