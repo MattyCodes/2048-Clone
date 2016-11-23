@@ -45,10 +45,6 @@ var removeMerge = function() {
 	$( "td" ).removeClass("merge");
 };
 
-var removeBlank = function() {
-	$( "td" ).removeClass("blank");
-}
-
 var randomTile = function(boardArray) {
 	// Generate a random '2' tile somewhere on the board that is not yet filled.
 	if ( anyEmpty() == true ) {
@@ -85,12 +81,11 @@ var animateAll = function() {
 	var g = getGrid();
 	for (var r = 0; r < 4; r ++) {
 		for (var i = 0; i < 4; i ++) {
-			if ( $( g[r][i] ).hasClass('blank') && isEmpty( g[r][i] ) == false ) {
+			if ( isEmpty(g[r][i]) == false ) {
 				$( g[r][i] ).animateCss('jello');
 			};
 		};
 	};
-	$(".merge").animateCss('jello');
 };
 
 var moveRight = function() {
@@ -111,7 +106,6 @@ var rightRow = function(row, i) {
 			var num = Number( $(row[i]).html() );
 			$( row[i] ).empty();
 			$( row[i + 1] ).append(num);
-			$( row[i + 1] ).addClass('blank');
 			rightRow(row, i + 1);
 		} else if ( Number( $(row[i]).html() ) == Number( $(row[i + 1]).html() ) && $(row[i + 1]).hasClass('merge') == false ) {
 			var numOne = Number( $(row[i]).html() );
@@ -133,7 +127,6 @@ var keyRight = function() {
 		moveRight();
 		animateAll();
 		removeMerge();
-		removeBlank();
 		displayResult();
 	});
 };
@@ -156,7 +149,6 @@ var leftRow = function(row, i) {
 			var num = Number( $(row[i]).html() );
 			$( row[i] ).empty();
 			$( row[i - 1] ).append(num);
-			$( row[i - 1] ).addClass('blank');
 			leftRow(row, i - 1);
 		} else if ( Number( $(row[i]).html() ) == Number( $(row[i - 1]).html() ) && $(row[i - 1]).hasClass('merge') == false ) {
 			var numOne = Number( $(row[i]).html() );
@@ -178,7 +170,6 @@ var keyLeft = function() {
 		moveLeft();
 		animateAll();
 		removeMerge();
-		removeBlank();
 		displayResult();
 	});
 };
@@ -208,7 +199,6 @@ var keyUp = function() {
 		moveUp();
 		animateAll();
 		removeMerge();
-		removeBlank();
 		displayResult();
 	});
 };
@@ -228,7 +218,6 @@ var keyDown = function() {
 		moveDown();
 		animateAll();
 		removeMerge();
-		removeBlank();
 		displayResult();
 	});
 };

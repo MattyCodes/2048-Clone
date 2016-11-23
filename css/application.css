@@ -32,13 +32,13 @@ td {
 	animation-duration: 3s;
 	animation-delay: 3s;
 	animation-iteration-count: 1;
-	-webkit-animation-duration: .1s;
+	-webkit-animation-duration: 10ms;
 	-webkit-animation-delay: 0s;
 	-webkit-animation-iteration-count: 1;
-	-moz-animation-duration: .1s;
+	-moz-animation-duration: 10ms;
 	-moz-animation-delay: 0s;
 	-moz-animation-iteration-count: 1;
-	-ms-animation-duration: .1s;
+	-ms-animation-duration: 10ms;
 	-ms-animation-delay: 0s;
 	-ms-animation-iteration-count: 1;
 }
