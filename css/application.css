@@ -9,21 +9,38 @@ body {
 
 table, td, tr {
 	border: 2px solid #564138;
-	border-collapse: collapse;
+	background-color: #AF8979;
 }
 
 table {
 	margin: auto;
 	margin-top: 20px;
+	border-radius: 5px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 td {
+	border-radius: 10px;
+	background-color: #FFEFCE;
 	width: 110px;
 	height: 110px;
 	font-size: 35px;
 	font-weight: bold;
-	background-color: #AF8979;
 	color: #3D261C;
+	animation-duration: 3s;
+	animation-delay: 3s;
+	animation-iteration-count: 1;
+	-webkit-animation-duration: .1s;
+	-webkit-animation-delay: 0s;
+	-webkit-animation-iteration-count: 1;
+	-moz-animation-duration: .1s;
+	-moz-animation-delay: 0s;
+	-moz-animation-iteration-count: 1;
+	-ms-animation-duration: .1s;
+	-ms-animation-delay: 0s;
+	-ms-animation-iteration-count: 1;
 }
 
 h1 {
@@ -62,8 +79,8 @@ button:focus {
 
 #game-over {
 	background: rgba(213,195,174, 0.65);
-	width: 456px;
-	height: 456px;
+	width: 474px;
+	height: 474px;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
@@ -72,7 +89,7 @@ button:focus {
 
 .centered {
   position: fixed;
-  top: 49.3%;
+  top: 50.7%;
   left: 50%;
   transform: translate(-50%, -50%);
   -webkit-transform: translate(-50%, -50%);

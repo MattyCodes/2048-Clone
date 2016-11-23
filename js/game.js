@@ -20,6 +20,9 @@ var populateBoard = function(boardArray) {
 	var gameBoard = $("tr").children();
 	for (var i = 0; i < gameBoard.length; i ++) {
 		$( gameBoard[i] ).append( boardArray[i] );
+		if ( Number( $(gameBoard[i]).html() ) != 0 ) {
+			$( gameBoard[i] ).animateCss('bounceIn');
+		};
 	};
 };
 
@@ -241,3 +244,16 @@ var buttonListener = function() {
 		newGame();
 	});
 };
+
+// Extend jQuery to use Animate.css
+
+$.fn.extend({
+    animateCss: function (animationName) {
+        var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+        this.addClass('animated ' + animationName).one(animationEnd, function() {
+            $(this).removeClass('animated ' + animationName);
+        });
+    }
+});
+
+
