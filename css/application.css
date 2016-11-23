@@ -67,8 +67,8 @@ button:focus {
 
 #game-over {
 	background: rgba(213,195,174, 0.65);
-	width: 565px;
-	height: 590px;
+	width: 455px;
+	height: 455px;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
