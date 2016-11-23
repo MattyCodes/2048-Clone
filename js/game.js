@@ -21,7 +21,7 @@ var populateBoard = function(boardArray) {
 	for (var i = 0; i < gameBoard.length; i ++) {
 		$( gameBoard[i] ).append( boardArray[i] );
 		if ( Number( $(gameBoard[i]).html() ) != 0 ) {
-			$( gameBoard[i] ).animateCss('bounceIn');
+			$( gameBoard[i] ).animateCss('jello');
 		};
 	};
 };
@@ -45,6 +45,10 @@ var removeMerge = function() {
 	$( "td" ).removeClass("merge");
 };
 
+var removeBlank = function() {
+	$( "td" ).removeClass("blank");
+}
+
 var randomTile = function(boardArray) {
 	// Generate a random '2' tile somewhere on the board that is not yet filled.
 	if ( anyEmpty() == true ) {
@@ -54,6 +58,7 @@ var randomTile = function(boardArray) {
 			tile = gameBoard[randomIndex()];
 		};
 		$(tile).append(2);
+		$(tile).animateCss('jello');
 	};
 };
 
@@ -76,6 +81,18 @@ var getGrid = function() {
 	return [ rowOne, rowTwo, rowThree, rowFour ];
 };
 
+var animateAll = function() {
+	var g = getGrid();
+	for (var r = 0; r < 4; r ++) {
+		for (var i = 0; i < 4; i ++) {
+			if ( $( g[r][i] ).hasClass('blank') && isEmpty( g[r][i] ) == false ) {
+				$( g[r][i] ).animateCss('jello');
+			};
+		};
+	};
+	$(".merge").animateCss('jello');
+};
+
 var moveRight = function() {
 	g = getGrid();
 	for (r = 0; r <= 3; r ++) {
@@ -94,6 +111,7 @@ var rightRow = function(row, i) {
 			var num = Number( $(row[i]).html() );
 			$( row[i] ).empty();
 			$( row[i + 1] ).append(num);
+			$( row[i + 1] ).addClass('blank');
 			rightRow(row, i + 1);
 		} else if ( Number( $(row[i]).html() ) == Number( $(row[i + 1]).html() ) && $(row[i + 1]).hasClass('merge') == false ) {
 			var numOne = Number( $(row[i]).html() );
@@ -113,7 +131,9 @@ var rightRow = function(row, i) {
 var keyRight = function() {
 	Mousetrap.bind('right', function() {
 		moveRight();
+		animateAll();
 		removeMerge();
+		removeBlank();
 		displayResult();
 	});
 };
@@ -136,6 +156,7 @@ var leftRow = function(row, i) {
 			var num = Number( $(row[i]).html() );
 			$( row[i] ).empty();
 			$( row[i - 1] ).append(num);
+			$( row[i - 1] ).addClass('blank');
 			leftRow(row, i - 1);
 		} else if ( Number( $(row[i]).html() ) == Number( $(row[i - 1]).html() ) && $(row[i - 1]).hasClass('merge') == false ) {
 			var numOne = Number( $(row[i]).html() );
@@ -155,7 +176,9 @@ var leftRow = function(row, i) {
 var keyLeft = function() {
 	Mousetrap.bind('left', function() {
 		moveLeft();
+		animateAll();
 		removeMerge();
+		removeBlank();
 		displayResult();
 	});
 };
@@ -183,7 +206,9 @@ var moveUp = function() {
 var keyUp = function() {
 	Mousetrap.bind('up', function() {
 		moveUp();
+		animateAll();
 		removeMerge();
+		removeBlank();
 		displayResult();
 	});
 };
@@ -201,7 +226,9 @@ var moveDown = function() {
 var keyDown = function() {
 	Mousetrap.bind('down', function() {
 		moveDown();
+		animateAll();
 		removeMerge();
+		removeBlank();
 		displayResult();
 	});
 };
