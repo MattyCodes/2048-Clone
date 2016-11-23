@@ -89,14 +89,30 @@ var animateAll = function() {
 	};
 };
 
+var sameState = function(init, curr) {
+	var same = true;
+	for (var i = 0; i < 16; i ++) {
+		var a = init[i];
+		var b = curr[i];
+		if ( Number( $(a).html() ) != Number( $(b).html() ) ) {
+			var same = false;
+		};
+	};
+	return same;
+};
+
 var moveRight = function() {
-	g = getGrid();
+	var initialState = $("tr").children().clone();
+		g = getGrid();
 	for (r = 0; r <= 3; r ++) {
 		for (i = 3; i >= 0; i --) {
 			rightRow(g[r], i);
 		};
 	};
-	randomTile();
+	var currentState = $("tr").children().clone();
+	if ( sameState(initialState, currentState) == false) {
+		randomTile();
+	};
 };
 
 var rightRow = function(row, i) {
@@ -133,13 +149,17 @@ var keyRight = function() {
 };
 
 var moveLeft = function() {
+	var initialState = $("tr").children().clone();
 	g = getGrid();
 	for (r = 0; r <= 3; r ++) {
 		for (i = 0; i <= 3; i ++) {
 			leftRow(g[r], i);
 		};
 	};
-	randomTile();
+	var currentState = $("tr").children().clone();
+	if ( sameState(initialState, currentState) == false) {
+		randomTile();
+	};
 };
 
 var leftRow = function(row, i) {
@@ -186,13 +206,17 @@ var getColumns = function(grid) {
 };
 
 var moveUp = function() {
+	var initialState = $("tr").children().clone();
 	g = getColumns( getGrid() );
 	for (c = 0; c <= 3; c ++) {
 		for (i = 0; i <= 3; i ++) {
 			leftRow(g[c], i);
 		};
 	};
-	randomTile();
+	var currentState = $("tr").children().clone();
+	if ( sameState(initialState, currentState) == false) {
+		randomTile();
+	};
 };
 
 var keyUp = function() {
@@ -205,13 +229,17 @@ var keyUp = function() {
 };
 
 var moveDown = function() {
+	var initialState = $("tr").children().clone();
 	g = getColumns( getGrid() );
 	for (c = 0; c <= 3; c ++) {
 		for (i = 3; i >= 0; i --) {
 			rightRow(g[c], i);
 		};
 	};
-	randomTile();
+	var currentState = $("tr").children().clone();
+	if ( sameState(initialState, currentState) == false) {
+		randomTile();
+	};
 };
 
 var keyDown = function() {
