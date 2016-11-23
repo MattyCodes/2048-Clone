@@ -6,6 +6,7 @@ var newGame = function() {
 	boardArray.splice(indexOne, 1, 2);
 	boardArray.splice(indexTwo, 1, 2);
 	populateBoard(boardArray);
+	$("table").animateCss("bounceIn");
 };
 
 var clearBoard = function() {
@@ -21,7 +22,7 @@ var populateBoard = function(boardArray) {
 	for (var i = 0; i < gameBoard.length; i ++) {
 		$( gameBoard[i] ).append( boardArray[i] );
 		if ( Number( $(gameBoard[i]).html() ) != 0 ) {
-			$( gameBoard[i] ).animateCss('jello');
+			$( gameBoard[i] ).animateCss('bounceIn');
 		};
 	};
 };
@@ -54,7 +55,7 @@ var randomTile = function(boardArray) {
 			tile = gameBoard[randomIndex()];
 		};
 		$(tile).append(2);
-		$(tile).animateCss('jello');
+		$(tile).animateCss('bounceIn');
 	};
 };
 
@@ -82,7 +83,7 @@ var animateAll = function() {
 	for (var r = 0; r < 4; r ++) {
 		for (var i = 0; i < 4; i ++) {
 			if ( isEmpty(g[r][i]) == false ) {
-				$( g[r][i] ).animateCss('jello');
+				$( g[r][i] ).animateCss('bounceIn');
 			};
 		};
 	};
