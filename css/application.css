@@ -79,20 +79,13 @@ button:focus {
 
 #game-over {
 	background: rgba(213,195,174, 0.65);
-	width: 474px;
-	height: 474px;
+	width: 550px;
+	height: 525px;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	padding-top: 110px;
-}
-
-.centered {
-  position: fixed;
-  top: 50.7%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);
+	margin: 80px auto;
 }
 
 .hidden {
