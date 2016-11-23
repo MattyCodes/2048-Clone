@@ -21,7 +21,6 @@ var populateBoard = function(boardArray) {
 	var gameBoard = $("tr").children();
 	for (var i = 0; i < gameBoard.length; i ++) {
 		$( gameBoard[i] ).append( boardArray[i] );
-		giveColor( gameBoard[i] );
 		if ( Number( $(gameBoard[i]).html() ) != 0 ) {
 			$( gameBoard[i] ).animateCss('bounceIn');
 		};
@@ -83,7 +82,6 @@ var animateAll = function() {
 	var g = getGrid();
 	for (var r = 0; r < 4; r ++) {
 		for (var i = 0; i < 4; i ++) {
-			giveColor( g[r][i] );
 			if ( isEmpty(g[r][i]) == false ) {
 				$( g[r][i] ).animateCss('bounceIn');
 			};
@@ -262,22 +260,6 @@ var buttonListener = function() {
 		$("#game-play").fadeIn(450);
 		newGame();
 	});
-};
-
-var giveColor = function(item) {
-	$(item).removeClass();
-	// if ( Number( $(item).html() ) == 0 ) {
-	// 	$(item).addClass('zero');
-	// } else if ( Number( $(item).html() ) == 2 ) {
-	// 	$(item).addClass('two');
-	// } else if ( Number( $(item).html() ) == 4 ) {
-	// 	$(item).addClass('four');
-	// } else {
-	// 	$(item).addClass('two');
-	// };
-
-	// *temporary* \\
-	$(item).addClass('four');
 };
 
 // Extend jQuery to use Animate.css

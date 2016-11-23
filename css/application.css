@@ -23,7 +23,7 @@ table {
 
 td {
 	border-radius: 10px;
-	background-color: #CCB39D;
+	background-color: #ffefce;
 	width: 110px;
 	height: 110px;
 	font-size: 35px;
@@ -67,28 +67,18 @@ button:focus {
 
 #game-over {
 	background: rgba(213,195,174, 0.65);
-	width: 550px;
-	height: 525px;
+	width: 565px;
+	height: 590px;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	padding-top: 110px;
 	margin: 80px auto;
+	border: 3px solid #875E4D;
+	border-radius: 10px;
 }
 
 .hidden {
 	display: none;
-}
-
-.zero {
-	background-color: #CCB39D;
-}
-
-.two {
-	background-color: #e5e3da;
-}
-
-.four {
-	background-color: #ffefce;
 }
 
