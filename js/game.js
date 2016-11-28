@@ -1,5 +1,6 @@
 var newGame = function() {
 	clearBoard();
+	playerScore = 0;
 	var boardArray = [ ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' ];
 	var indexOne = randomIndex();
 	do { var indexTwo = randomIndex() } while (indexOne == indexTwo);
@@ -128,6 +129,7 @@ var rightRow = function(row, i) {
 			var numOne = Number( $(row[i]).html() );
 			var numTwo = Number( $(row[i + 1]).html() );
 			var result = numOne + numTwo;
+			playerScore += result;
 			$( row[i] ).empty();
 			$( row[i + 1] ).empty();
 			$( row[i + 1] ).append(result);
@@ -175,6 +177,7 @@ var leftRow = function(row, i) {
 			var numOne = Number( $(row[i]).html() );
 			var numTwo = Number( $(row[i - 1]).html() );
 			var result = numOne + numTwo;
+			playerScore += result;
 			$( row[i] ).empty();
 			$( row[i - 1] ).empty();
 			$( row[i - 1] ).append(result);
@@ -275,6 +278,8 @@ var gameOver = function() {
 var displayResult = function() {
 		if ( gameOver() == true ) {
 			$("#game-play").hide();
+			$(".score").empty()
+			$(".score").append("Score: " + playerScore + "<br>" + "Max Number: " + findLargestNumber() );
 			$("#game-over").fadeIn(450);
 		};
 };
@@ -288,6 +293,17 @@ var buttonListener = function() {
 		$("#game-play").fadeIn(450);
 		newGame();
 	});
+};
+
+var findLargestNumber = function() {
+	var max = 0;
+	var cells = $("tr").children();
+	for (var i = 0; i <= cells.length; i ++) {
+		if ( Number( $(cells[i]).html() ) > max ) {
+			max = Number( $(cells[i]).html() );
+		};
+	};
+	return max;
 };
 
 // Extend jQuery to use Animate.css
